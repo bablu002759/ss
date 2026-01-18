@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gift for You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+    text-align: center;
+    padding: 40px;
+    color: #333;
+}
+
+#giftBox, .door {
+    display: none;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 20px;
+    background: #fffafa;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 400px;
+    min-height: 180px;
+}
+
+h1 {
+    color: #ff1493;
+    margin-bottom: 15px;
+}
+
+.typed-text {
+    min-height: 50px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.click-text {
+    color: #ff1493;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    cursor: pointer;
+    margin: 8px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.door-btn {
+    display: none;
+}
+
+.fade-in {
+    animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0; transform: scale(0.8);}
+    100% {opacity:1; transform: scale(1);}
+}
+</style>
+</head>
+<body>
+
+<!-- GIFT BOX -->
+<div id="giftBox">
+    <h1>🎁 A Special Gift for You 🎁</h1>
+    <div class="typed-text" id="textBox"></div>
+
+    <div class="click-text">click here 👇</div>
+
+    <div>
+        <button class="door-btn" id="btn1" onclick="openDoor(1)">Door 1</button>
+        <button class="door-btn" id="btn2" onclick="openDoor(2)">Door 2</button>
+        <button class="door-btn" id="btn3" onclick="openDoor(3)">Door 3</button>
+        <button class="door-btn" id="btn4" onclick="openDoor(4)">Door 4</button>
+        <button class="door-btn" id="btn5" onclick="openDoor(5)">Door 5</button>
+        <button class="door-btn" id="btn6" onclick="openDoor(6)">Door 6</button>
+        <button class="door-btn" id="btn7" onclick="openDoor(7)">Door 7</button>
+    </div>
+</div>
+
+<!-- DOORS -->
+<div class="door" id="door1"><div class="typed-text" id="textBox1"></div></div>
+<div class="door" id="door2"><div class="typed-text" id="textBox2"></div></div>
+<div class="door" id="door3"><div class="typed-text" id="textBox3"></div></div>
+<div class="door" id="door4"><div class="typed-text" id="textBox4"></div></div>
+<div class="door" id="door5"><div class="typed-text" id="textBox5"></div></div>
+<div class="door" id="door6"><div class="typed-text" id="textBox6"></div></div>
+
+<div class="door" id="door7">
+    <h1 class="fade-in">🎉 SURPRISE! 🎉</h1>
+    <p class="fade-in">
+        Ei 7 ta dorja banani oislo sudu tor lagi 💖<br>
+        karon tui sei manus jare ekta msg dile amr mon ta muhurtei vala oijay 🤍✨
+    </p>
+</div>
+
+<script>
+const texts = [
+    "Ei box ta sudu tor lagi 🤍\nKulte chaile nichor Door gulat click kor ✨",
+    "aij kew tor kotha mono koria haser 🙂",
+    "kew tor dinta sundor korte char 🌷",
+    "Notification o kewror nam deklei mon ta halka oijay 💛",
+    "kichu manus ojantei onnor lagi special oijay ✨",
+    "aij sudu ekta chuto prosno 🤔\ntui kita janosni tore je kew miss korer 💌",
+    "ou dorjar bitre sudu ekta chuto msg aslo 💌"
+];
+
+function typeText(elementId, text, speed = 100) { // SLOW typing
+    const el = document.getElementById(elementId);
+    el.innerHTML = "";
+    let i = 0;
+    const typer = setInterval(() => {
+        el.innerHTML += text.charAt(i);
+        i++;
+        if(i >= text.length){
+            clearInterval(typer);
+        }
+    }, speed);
+}
+
+function showDoor(num){
+    document.getElementById("giftBox").style.display = "none";
+
+    for(let i=1;i<=7;i++){
+        const d = document.getElementById("door"+i);
+        if(d) d.style.display = "none";
+    }
+
+    if(num <= 6){
+        const door = document.getElementById("door"+num);
+        door.style.display = "block";
+        door.classList.add("fade-in");
+
+        typeText("textBox"+num, texts[num], 100);
+    } else {
+        document.getElementById("door7").style.display = "block";
+    }
+}
+
+function openDoor(num){
+    showDoor(num);
+
+    document.getElementById("btn"+num).style.display = "none";
+
+    let next = num + 1;
+    if(document.getElementById("btn"+next)){
+        document.getElementById("btn"+next).style.display = "inline-block";
+    }
+}
+
+// START
+window.onload = () => {
+    document.getElementById("giftBox").style.display = "block";
+    typeText("textBox", texts[0], 100);
+    document.getElementById("btn1").style.display = "inline-block";
+};
+</script>
+
+</body>
+</html>
