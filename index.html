@@ -42,19 +42,8 @@ h1 {
     font-size: 18px;
     color: #ff69b4;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     animation: pulse 1.5s infinite;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background: #ff69b4;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
 }
 
 @keyframes pulse {
@@ -77,44 +66,37 @@ button {
 <body><div id="giftBox">
     <h1>🎁 A Special Gift for You 🎁</h1>
     <div class="typed-text" id="textBox"></div>
-    <div class="click-text" id="nextBtn" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 1 👇</div>
 </div><div class="door" id="door1">
     <div class="typed-text" id="textBox1"></div>
-    <div class="click-text" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 2 👇</div>
 </div><div class="door" id="door2">
     <div class="typed-text" id="textBox2"></div>
-    <div class="click-text" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 3 👇</div>
 </div><div class="door" id="door3">
     <div class="typed-text" id="textBox3"></div>
-    <div class="click-text" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 4 👇</div>
 </div><div class="door" id="door4">
     <div class="typed-text" id="textBox4"></div>
-    <div class="click-text" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 5 👇</div>
 </div><div class="door" id="door5">
     <div class="typed-text" id="textBox5"></div>
-    <div class="click-text" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 6 👇</div>
 </div><div class="door" id="door6">
     <div class="typed-text" id="textBox6"></div>
-    <div class="click-text" onclick="nextDoor()">click here 👇</div>
-    <button onclick="nextDoor()">Next Door</button>
+    <div class="click-text" onclick="nextDoor()">Door 7 👇</div>
 </div><div class="door" id="door7">
     <h1 class="fade-in">🎉 SURPRISE! 🎉</h1>
     <p class="fade-in">Ei 7 ta dorja banani oislo sudu tor lagi 💖<br>
     karon tui sei manus jare ekta msg dile amr mon ta muhurtei vala oijay 🤍✨</p>
 </div><script>
 const texts = [
-    "Ei box ta sudu tor lagi 🤍\nKulte chaile niche 'click here' e click kor ✨",
-    "Aij kew tor kotha mone kore haslo 🙂",
+    "Ei box ta sudu tor lagi 🤍\nKulte chaile Door 1 e click kor ✨",
+    "Aij kew tor kotha mone koria haser 🙂",
     "Kew tor dinta sundor korte chay 🌷",
     "Notification e tor nam deklei mon ta halka oijay 💛",
     "Kichu manus ojantei onnor lagi special oijay ✨",
-    "Aij sudu ekta chuto prosno 🤔\nTui janos tore kew miss kore? 💌",
+    "Aij sudu ekta chuto prosno 🤔\nTui kita janosni tore je kew miss kore? 💌",
     "Ei dorjar vitore sudu ekta chuto msg aslo 💌"
 ];
 
