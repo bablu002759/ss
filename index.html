@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gift for You</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Playfair Display', serif;
+        background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+        text-align: center;
+        padding: 50px;
+        color: #333;
+    }
+    .door, #giftBox {
+        display: none;
+        margin: 20px auto;
+        padding: 30px;
+        border-radius: 15px;
+        background: #fffafa;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        max-width: 400px;
+        min-height: 150px;
+        position: relative;
+    }
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: #ff69b4;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    h1 {
+        color: #ff1493;
+        margin-bottom: 15px;
+    }
+    .typed-text {
+        display: inline-block;
+        min-height: 40px;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    .fade-in {
+        animation: fadeIn 3s ease forwards;
+    }
+    @keyframes fadeIn {
+        0% {opacity:0; transform: scale(0.9);}
+        100% {opacity:1; transform: scale(1);}
+    }
+</style>
+</head>
+<body>
 
+<div id="giftBox">
+    <h1>🎁 A Special Gift for You 🎁</h1>
+    <div class="typed-text" id="textBox"></div>
+    <button id="nextBtn" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door1">
+    <div class="typed-text" id="textBox1"></div>
+    <button id="nextBtn1" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door2">
+    <div class="typed-text" id="textBox2"></div>
+    <button id="nextBtn2" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door3">
+    <div class="typed-text" id="textBox3"></div>
+    <button id="nextBtn3" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door4">
+    <div class="typed-text" id="textBox4"></div>
+    <button id="nextBtn4" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door5">
+    <div class="typed-text" id="textBox5"></div>
+    <button id="nextBtn5" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door6">
+    <div class="typed-text" id="textBox6"></div>
+    <button id="nextBtn6" onclick="nextDoor()">click here 👇</button>
+</div>
+
+<div class="door" id="door7">
+    <h1 class="fade-in">🎉 SURPRISE! 🎉</h1>
+    <p class="fade-in">Ei 7 ta dorja banani oislo sudu tor lagi 💖<br>
+    karon tui sei manus jare ekta msg dile amr mon ta muhurtei vala oijay 🤍✨</p>
+</div>
+
+<script>
+// Texts for each door
+const texts = [
+    "Ei box ta sudu tor lagi 🤍\nkulte chaile nichor button o click kor ✨",
+    "aij kew tor kotha mono koria haser 🙂",
+    "kew tor dinta sundor korte char 🌷",
+    "Notification o kewror nam deklei mon ta halka oijay 💛",
+    "kichu manus ojantei onnor lagi special oijay ✨",
+    "aij sudu ekta chuto prosno 🤔\ntui janos tore kew miss korer 💌",
+    "ou dorjar bitre sudu ekta chuto msg aslo 💌"
+];
+
+let currentDoor = 0;
+
+function typeText(elementId, text, speed = 40, callback) {
+    const el = document.getElementById(elementId);
+    el.innerHTML = "";
+    let i = 0;
+    const typer = setInterval(() => {
+        el.innerHTML += text.charAt(i);
+        i++;
+        if(i >= text.length){
+            clearInterval(typer);
+            if(callback) callback();
+        }
+    }, speed);
+}
+
+function showDoor(doorIndex){
+    // Hide all doors
+    document.getElementById('giftBox').style.display = 'none';
+    for(let i=1;i<=7;i++){
+        let d = document.getElementById('door'+i);
+        if(d) d.style.display = 'none';
+    }
+
+    if(doorIndex < 7){
+        const doorId = doorIndex === 0 ? 'giftBox' : 'door'+doorIndex;
+        document.getElementById(doorId).style.display = 'block';
+        const textBoxId = doorIndex === 0 ? 'textBox' : 'textBox'+doorIndex;
+        typeText(textBoxId, texts[doorIndex], 30);
+    } else {
+        document.getElementById('door7').style.display = 'block';
+    }
+}
+
+function nextDoor(){
+    currentDoor++;
+    showDoor(currentDoor);
+}
+
+// First Door
+showDoor(0);
+</script>
+
+</body>
+</html>
