@@ -46,6 +46,17 @@ h1 {
     animation: pulse 1.5s infinite;
 }
 
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #ff69b4;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 @keyframes pulse {
     0% {opacity: 1;}
     50% {opacity: 0.5;}
@@ -67,30 +78,36 @@ h1 {
     <h1>🎁 A Special Gift for You 🎁</h1>
     <div class="typed-text" id="textBox"></div>
     <div class="click-text" id="nextBtn" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door1">
     <div class="typed-text" id="textBox1"></div>
     <div class="click-text" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door2">
     <div class="typed-text" id="textBox2"></div>
     <div class="click-text" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door3">
     <div class="typed-text" id="textBox3"></div>
     <div class="click-text" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door4">
     <div class="typed-text" id="textBox4"></div>
     <div class="click-text" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door5">
     <div class="typed-text" id="textBox5"></div>
     <div class="click-text" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door6">
     <div class="typed-text" id="textBox6"></div>
     <div class="click-text" onclick="nextDoor()">click here 👇</div>
+    <button onclick="nextDoor()">Next Door</button>
 </div><div class="door" id="door7">
     <h1 class="fade-in">🎉 SURPRISE! 🎉</h1>
     <p class="fade-in">Ei 7 ta dorja banani oislo sudu tor lagi 💖<br>
     karon tui sei manus jare ekta msg dile amr mon ta muhurtei vala oijay 🤍✨</p>
 </div><script>
-// Texts for each door
 const texts = [
     "Ei box ta sudu tor lagi 🤍\nKulte chaile niche 'click here' e click kor ✨",
     "Aij kew tor kotha mone kore haslo 🙂",
@@ -104,12 +121,11 @@ const texts = [
 let currentDoor = 0;
 let isTyping = false;
 
-function typeText(elementId, text, speed = 80, callback) { // slow typing
+function typeText(elementId, text, speed = 80, callback) {
     const el = document.getElementById(elementId);
     el.innerHTML = "";
     let i = 0;
     isTyping = true;
-
     const typer = setInterval(() => {
         el.innerHTML += text.charAt(i);
         i++;
@@ -123,16 +139,13 @@ function typeText(elementId, text, speed = 80, callback) { // slow typing
 
 function showDoor(doorIndex) {
     document.getElementById('giftBox').style.display = 'none';
-
     for (let i = 1; i <= 7; i++) {
         const d = document.getElementById('door' + i);
         if (d) d.style.display = 'none';
     }
-
     if (doorIndex < 7) {
         const doorId = doorIndex === 0 ? 'giftBox' : 'door' + doorIndex;
         const textBoxId = doorIndex === 0 ? 'textBox' : 'textBox' + doorIndex;
-
         document.getElementById(doorId).style.display = 'block';
         typeText(textBoxId, texts[doorIndex]);
     } else {
@@ -141,12 +154,11 @@ function showDoor(doorIndex) {
 }
 
 function nextDoor() {
-    if (isTyping) return; // typing শেষ না হলে ক্লিক কাজ করবে না
+    if (isTyping) return;
     currentDoor++;
     showDoor(currentDoor);
 }
 
-// First Door
 showDoor(0);
 </script></body>
 </html>
